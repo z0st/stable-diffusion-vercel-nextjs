@@ -31,10 +31,10 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div className="min-h-screen bg-gray-100 py-0 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div className="absolute inset-0 bg-gradient-to-r from-[#5d00ff] via-[#bf00ff] to-[#ff0044] shadow-lg transform sm:rounded-3xl"></div>
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+        <div className="relative px-4 py-0 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
             <input
               type="text"
