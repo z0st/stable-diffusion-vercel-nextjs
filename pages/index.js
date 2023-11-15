@@ -4,9 +4,13 @@ function Home() {
   const [inputValue, setInputValue] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
+  const basePromptStart = "una pintura en la que la gente esta vestida de ";
+  const basePromptEnd = " por Paul Gauguin";
+  const [prompt, setPrompt] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setPrompt(basePromptStart + inputValue + basePromptEnd);
     setLoading(true);
 
     const response = await fetch('/api/stablediffusion', {
@@ -14,7 +18,7 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: inputValue }),
+      body: JSON.stringify({ value: prompt }),
     });
 
     if (response.ok) {
@@ -29,7 +33,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-green-500 to-cyan-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#5d00ff] via-[#bf00ff] to-[#ff0044] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
             <input
@@ -37,10 +41,10 @@ function Home() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               className="w-full px-5 py-3 text-gray-700 bg-gray-200 rounded"
-              placeholder="Enter a prompt..."
+              placeholder="Enter a description..."
             />
-            <button type="submit" className="w-full px-3 py-4 text-white bg-gradient-to-r from-cyan-400 via-green-500 to-cyan-400 rounded-md focus:outline-none" disabled={loading}>
-              Submit
+            <button type="submit" className="w-full px-3 py-4 text-white bg-gradient-to-r from-[#5d00ff] via-[#bf00ff] to-[#ff0044] rounded-md focus:outline-none" disabled={loading}>
+              Help Paul Gauguin!
             </button>
           </form>
         </div>
