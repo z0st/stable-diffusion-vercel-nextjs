@@ -39,6 +39,7 @@ function Home() {
               className="w-full px-5 py-3 text-gray-700 bg-gray-200 rounded"
               placeholder="Enter a prompt..."
             />
+                {prompt}
             <button type="submit" className="w-full px-3 py-4 text-white bg-gradient-to-r from-cyan-400 via-green-500 to-cyan-400 rounded-md focus:outline-none" disabled={loading}>
               Submit
             </button>
