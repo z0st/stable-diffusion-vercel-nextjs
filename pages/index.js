@@ -43,7 +43,6 @@ function Home() {
               className="w-full px-5 py-3 text-gray-700 bg-gray-200 rounded"
               placeholder="Enter a description..."
             />
-                {prompt}
             <button type="submit" className="w-full px-3 py-4 text-white bg-gradient-to-r from-[#5d00ff] via-[#bf00ff] to-[#ff0044] rounded-md focus:outline-none" disabled={loading}>
               Help Paul Gauguin!
             </button>
