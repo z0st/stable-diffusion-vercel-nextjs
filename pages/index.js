@@ -18,7 +18,7 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: prompt }),
+      body: JSON.stringify({ value: inputValue }),
     });
 
     if (response.ok) {
