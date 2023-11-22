@@ -9,8 +9,8 @@ function Home() {
   const [prompt, setPrompt] = useState('');
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
     setPrompt(basePromptStart + inputValue + basePromptEnd);
+    event.preventDefault();
     setLoading(true);
 
     const response = await fetch('/api/stablediffusion', {
