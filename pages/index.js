@@ -7,11 +7,10 @@ function Home() {
   const basePromptStart = "una pintura en la que la gente esta vestida de ";
   const basePromptEnd = " por Paul Gauguin";
   const [prompt, setPrompt] = useState('');
-  // const [input, setInput] = useState(`${basePromptStart} ${inputValue} ${basePromptEnd}`);
 
   const handleSubmit = async (event) => {
-    //event.preventDefault();
-    setPrompt(basePromptStart + inputValue + basePromptEnd);
+    event.preventDefault();
+    let image = basePromptStart + inputValue + basePromptEnd;
     setLoading(true);
 
     const response = await fetch('/api/stablediffusion', {
@@ -19,7 +18,8 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: prompt }),
+      body: JSON.stringify({ value: image }),
+      // body: JSON.stringify({ value: prompt }),
     });
 
     if (response.ok) {
