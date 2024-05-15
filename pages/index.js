@@ -38,7 +38,7 @@ function Home() {
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
             <input
               type="text"
-              value={inputValue}
+              value={"una pintura en la que la gente esta vestida de " + inputValue + " por Paul Gauguin"}
               onChange={(e) => setInputValue(e.target.value)}
               className="w-full px-5 py-3 text-gray-700 bg-gray-200 rounded"
               placeholder="Enter a description..."
