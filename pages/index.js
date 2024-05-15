@@ -10,7 +10,7 @@ function Home() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setPrompt(basePromptStart + inputValue + basePromptEnd);
+    // setPrompt(basePromptStart + inputValue + basePromptEnd);
     setLoading(true);
 
     const response = await fetch('/api/stablediffusion', {
@@ -18,7 +18,7 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: prompt }),
+      body: JSON.stringify({ value: basePromptStart + prompt + basePromptEnd }),
     });
 
     if (response.ok) {
@@ -38,7 +38,7 @@ function Home() {
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
             <input
               type="text"
-              value={"una pintura en la que la gente esta vestida de " + inputValue + " por Paul Gauguin"}
+              value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               className="w-full px-5 py-3 text-gray-700 bg-gray-200 rounded"
               placeholder="Enter a description..."
