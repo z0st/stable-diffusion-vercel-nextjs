@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import Replicate from 'replicate';
+import { put } from "@vercel/blob";
 
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
@@ -30,9 +31,13 @@ const handler = async (req, res) => {
       },
     );
 
-
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    
     console.log(output)
     res.status(200).json(output)
+    const { url } = await put(res.status(200).json(output), `${getRandomInt(10000000000)}.png`, { access: 'public' });
     //res.status(200).json([
      //   'https://replicate.delivery/pbxt/neqGIe66cYuPOUPM0JqokMfqsX9CRYgvkycUxyqlCKUjwJchA/out-0.png'
     //  ]
